@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Gentle Guide to LoRA - Phi.ai Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+                padding: 0 30px;
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(107, 127, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #6B7FFF;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        .dot.large {
+            width: 12px;
+            height: 12px;
+        }
+
+        .dot.small {
+            width: 8px;
+            height: 8px;
+            opacity: 0.6;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .logo-text .ai {
+            color: #6B7FFF;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6B7FFF;
+        }
+
+        /* Article Header */
+        .article-header {
+            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .breadcrumb {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #6B7FFF;
+            text-decoration: none;
+        }
+
+        .article-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6B7FFF 0%, #5B6FE8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-details h4 {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .author-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background: #f0f2ff;
+            color: #6B7FFF;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Featured Image */
+        .featured-image {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(107, 127, 255, 0.15);
+        }
+
+        .featured-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 100%;
+        }
+
+        /* Article Content */
+        .article-content {
+            padding: 3rem 0;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin: 2.5rem 0 1rem;
+            font-weight: 700;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #333;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            word-wrap: break-word;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+            word-wrap: break-word;
+        }
+
+        .article-content code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #6B7FFF;
+        }
+
+        .code-block-wrapper {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .code-header {
+            background: #2d2d2d;
+            color: #fff;
+            padding: 0.8rem 1rem;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .code-language {
+            color: #888;
+            font-weight: 600;
+        }
+
+        .copy-button {
+            background: #3d3d3d;
+            color: #fff;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .copy-button:hover {
+            background: #4d4d4d;
+        }
+
+        .copy-button.copied {
+            background: #10b981;
+        }
+
+        .article-content pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 0 0 10px 10px;
+            overflow-x: auto;
+            margin: 0;
+            line-height: 1.6;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .article-content pre::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+
+        .article-content pre::-webkit-scrollbar-track {
+            background: #2d2d2d;
+            border-radius: 10px;
+        }
+
+        .article-content pre::-webkit-scrollbar-thumb {
+            background: #4d4d4d;
+            border-radius: 10px;
+        }
+
+        .article-content pre::-webkit-scrollbar-thumb:hover {
+            background: #5d5d5d;
+        }
+
+        .article-content pre code {
+            background: transparent;
+            padding: 0;
+            color: #d4d4d4;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        /* Python Syntax Highlighting */
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .number { color: #b5cea8; }
+        .comment { color: #6a9955; font-style: italic; }
+        .function { color: #dcdcaa; }
+        .class-name { color: #4ec9b0; }
+        .decorator { color: #c586c0; }
+        .operator { color: #d4d4d4; }
+        .builtin { color: #4ec9b0; }
+        .self { color: #9cdcfe; }
+
+        .highlight-box {
+            background: #f8f9ff;
+            border-left: 4px solid #6B7FFF;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        .image-caption {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Call to Action */
+        .article-cta {
+            background: linear-gradient(135deg, #6B7FFF 0%, #5B6FE8 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .article-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-cta p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #6B7FFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 2px solid #e8eaf6;
+        }
+
+        .comments-section h2 {
+            text-align: left;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .giscus-container {
+            margin-top: 2rem;
+            background: #fafbff;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #e8eaf6;
+        }
+
+        .comments-placeholder {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .comments-placeholder h3 {
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .comments-placeholder p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Giscus theme overrides */
+        .giscus, .giscus-frame {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .article-title {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                padding: 2.5rem 0;
+            }
+
+            nav {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-header {
+                padding: 2.5rem 0 1.5rem;
+            }
+
+            .container {
+                padding: 0 20px;
+                max-width: 100%;
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .article-content {
+                padding: 2rem 0;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+                margin: 2rem 0 1rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.2rem;
+                margin: 1.5rem 0 0.8rem;
+            }
+
+            .article-content p,
+            .article-content li {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .code-block-wrapper {
+                margin: 1.5rem 0;
+            }
+
+            .article-content pre {
+                padding: 1rem;
+                font-size: 0.85rem;
+                max-height: 400px;
+            }
+
+            .code-header {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .featured-image {
+                margin: 0 0 2rem;
+                border-radius: 10px;
+            }
+
+            .article-cta {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+                border-radius: 10px;
+            }
+
+            .article-cta h3 {
+                font-size: 1.4rem;
+            }
+
+            .author-info {
+                flex-wrap: wrap;
+            }
+
+            .article-meta {
+                gap: 1rem;
+            }
+
+            .highlight-box {
+                padding: 1.2rem;
+                margin: 1.5rem 0;
+            }
+
+            .article-tags {
+                gap: 0.5rem;
+            }
+
+            .tag {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            nav {
+                padding: 0 15px;
+            }
+
+            .article-content h2 {
+                font-size: 1.3rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .article-content pre {
+                font-size: 0.75rem;
+                padding: 0.8rem;
+            }
+
+            .copy-button {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.7rem;
+            }
+
+            .code-header {
+                padding: 0.5rem 0.8rem;
+            }
+
+            .author-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .article-cta h3 {
+                font-size: 1.2rem;
+            }
+
+            .article-cta p {
+                font-size: 0.95rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <div class="logo-dots">
+                    <div class="dot small"></div>
+                    <div class="dot large"></div>
+                    <div class="dot"></div>
+                    <div class="dot large"></div>
+                    <div class="dot small"></div>
+                </div>
+                <span class="logo-text">Phi<span class="ai">.ai</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="article-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="blog.html">Blog</a> / A Gentle Guide to LoRA
+            </div>
+            
+            <h1 class="article-title">A Gentle Guide to LoRA: Fine-Tuning Billion-Parameter Models Without Copying Them</h1>
+            
+            <div class="article-meta">
+                <div class="author-info">
+                    <div class="author-avatar">MS</div>
+                    <div class="author-details">
+                        <h4>Mohamed Seyam</h4>
+                        <p>6 min read • 6 days ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-tags">
+                <span class="tag">AI</span>
+                <span class="tag">LLM Applications</span>
+                <span class="tag">Fine-Tuning</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">MLOps</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured-image">
+        <svg viewBox="0 0 1000 400">
+            <defs>
+                <linearGradient id="hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <rect width="1000" height="400" fill="url(#hero-grad)"/>
+            <!-- Visual representation of LoRA -->
+            <circle cx="250" cy="200" r="80" fill="rgba(255,255,255,0.2)" stroke="#fff" stroke-width="4"/>
+            <circle cx="750" cy="200" r="80" fill="rgba(255,255,255,0.2)" stroke="#fff" stroke-width="4"/>
+            
+            <!-- Low-rank adaptation arrows -->
+            <line x1="330" y1="200" x2="670" y2="200" stroke="#FFD700" stroke-width="8"/>
+            <line x1="330" y1="180" x2="670" y2="180" stroke="#FFD700" stroke-width="4" opacity="0.6"/>
+            <line x1="330" y1="220" x2="670" y2="220" stroke="#FFD700" stroke-width="4" opacity="0.6"/>
+            
+            <!-- Matrix labels -->
+            <text x="250" y="215" fill="#fff" font-size="48" text-anchor="middle" font-weight="bold">W</text>
+            <text x="500" y="150" fill="#FFD700" font-size="36" text-anchor="middle" font-weight="bold">A × B</text>
+            <text x="750" y="215" fill="#fff" font-size="48" text-anchor="middle" font-weight="bold">W'</text>
+            
+            <!-- Labels -->
+            <text x="250" y="320" fill="#fff" font-size="20" text-anchor="middle">Original Weights</text>
+            <text x="500" y="260" fill="#FFD700" font-size="18" text-anchor="middle">Low-Rank Adaptation</text>
+            <text x="750" y="320" fill="#fff" font-size="20" text-anchor="middle">Adapted Weights</text>
+            
+            <!-- Title -->
+            <text x="500" y="60" fill="#fff" font-size="32" font-weight="bold" text-anchor="middle">LoRA: Efficient Fine-Tuning</text>
+        </svg>
+    </div>
+
+    <div class="container article-content">
+        <div class="highlight-box">
+            <p><strong>Key Takeaway:</strong> A hands-on guide with PyTorch code you can run in Colab. Learn how to fine-tune billion-parameter models using only 0.8% of the storage space.</p>
+        </div>
+
+        <p>Large language models (LLMs) are amazing at writing, summarizing, and coding — but they're huge. A single 7-billion-parameter checkpoint can take up around 13 GB on disk.</p>
+
+        <p>Now imagine you want a model for every user's unique "tone" (friendly, formal, pirate…). Shipping a fresh 13 GB file for each person is just not feasible.</p>
+
+        <p><strong>Enter Low-Rank Adaptation (LoRA)</strong>: it transforms the problem from "one massive model per task" to "one tiny patch per task."</p>
+
+        <h2>In this article, we'll:</h2>
+        <ul>
+            <li>Explain the core idea</li>
+            <li>Build a simple color-name generator</li>
+            <li>Freeze the big model, train only a tiny 0.8% patch, and see the outputs change</li>
+            <li>Measure exactly how much disk space you save</li>
+        </ul>
+
+        <p>Every code snippet here can be copied into a Jupyter notebook and run immediately.</p>
+
+        <h2>1. The Everyday Problem</h2>
+        <p>You have a 7 GB language model that writes polite emails.</p>
+        <ul>
+            <li>A customer wants the same model, but in a friendly, emoji-filled tone.</li>
+            <li>Another customer wants it to speak like a 19th-century lawyer.</li>
+        </ul>
+
+        <p>If you fine-tune the full model for each customer, you must:</p>
+        <ul>
+            <li>Store several 7 GB files</li>
+            <li>Send each customer 7 GB</li>
+            <li>Load a new 7 GB into GPU memory every time you switch tasks</li>
+        </ul>
+
+        <p>That quickly becomes expensive and slow. <strong>LoRA gives you a lighter way.</strong></p>
+
+        <h2>2. What LoRA Does in One Sentence</h2>
+        <div class="highlight-box">
+            <p>LoRA keeps the original model frozen and adds a tiny, trainable "sticker" that changes the outputs.</p>
+        </div>
+
+        <h2>3. Why Is a Sticker Enough?</h2>
+        <p>During fine-tuning, the weight matrix <code>W</code> changes by a small <code>Δw</code>. Researchers observed that <code>Δw</code> is almost always <strong>low-rank</strong>, meaning it can be expressed as two small matrices multiplied together.</p>
+
+        <p>During inference, you can compute it by:</p>
+        <div class="code-block-wrapper">
+            <div class="code-header">
+                <span class="code-language">Formula</span>
+                <button class="copy-button" onclick="copyCode(this)">
+                    <span>📋 Copy</span>
+                </button>
+            </div>
+            <pre><code>output = W·x + A·B·x</code></pre>
+        </div>
+
+        <h2>4. Build a Color Generator Model</h2>
+        <p>We'll use a small model that predicts the next color word. The same approach works for billion-parameter transformers.</p>
+
+        <h3>4.1 Imports</h3>
+        <div class="code-block-wrapper">
+            <div class="code-header">
+                <span class="code-language">Python</span>
+                <button class="copy-button" onclick="copyCode(this)">
+                    <span>📋 Copy</span>
+                </button>
+            </div>
+            <pre><code><span class="keyword">import</span> torch, torch.nn.functional <span class="keyword">as</span> F
+<span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm  <span class="comment"># nice progress bar</span>
+torch.manual_seed(<span class="number">42</span>)  <span class="comment"># keep results repeatable</span></code></pre>
+        </div>
+
+        <h3>4.2 Toy Language Model</h3>
+        <div class="code-block-wrapper">
+            <div class="code-header">
+                <span class="code-language">Python</span>
+                <button class="copy-button" onclick="copyCode(this)">
+                    <span>📋 Copy</span>
+                </button>
+            </div>
+            <pre><code><span class="comment"># A simple vocabulary list mapping token IDs to color names</span>
+colourps = [<span class="string">"red"</span>,<span class="string">"orange"</span>,<span class="string">"yellow"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>,<span class="string">"indigo"</span>,<span class="string">"violet"</span>,
+            <span class="string">"magenta"</span>,<span class="string">"marigold"</span>,<span class="string">"chartreuse"</span>]
+
+<span class="keyword">class</span> <span class="class-name">ColourModel</span>(torch.nn.Module):
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="self">self</span>, hidden=<span class="number">1024</span>):
+        <span class="builtin">super</span>().__init__()
+        
+        <span class="comment"># Embedding layer</span>
+        <span class="self">self</span>.embed = torch.nn.Embedding(<span class="number">10</span>, hidden)
+        
+        <span class="comment"># Large linear layer (LoRA target)</span>
+        <span class="self">self</span>.linear = torch.nn.Linear(hidden, hidden)
+        
+        <span class="comment"># Output head</span>
+        <span class="self">self</span>.head = torch.nn.Linear(hidden, <span class="number">10</span>)
+    
+    <span class="keyword">def</span> <span class="function">forward</span>(<span class="self">self</span>, idx):
+        x = <span class="self">self</span>.embed(idx)
+        x = <span class="self">self</span>.linear(x)
+        <span class="keyword">return</span> <span class="self">self</span>.head(x)
+
+model = ColourModel()</code></pre>
+        </div>
+
+        <h3>4.3 Generate Before Fine-Tuning</h3>
+        <div class="code-block-wrapper">
+            <div class="code-header">
+                <span class="code-language">Python</span>
+                <button class="copy-button" onclick="copyCode(this)">
+                    <span>📋 Copy</span>
+                </button>
+            </div>
+            <pre><code><span class="decorator">@torch.no_grad()</span>
+<span class="keyword">def</span> <span class="function">generate</span>(model, prompt_ids, max_new=<span class="number">1</span>):
+    ids = prompt_ids
+    new_ids = []
+    
+    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="builtin">range</span>(max_new):
+        logits = model(ids)[:, -<span class="number">1</span>, :]
+        nxt = logits.argmax(<span class="number">1</span>, keepdim=<span class="builtin">True</span>)
+        ids = torch.cat([ids, nxt], dim=<span class="number">1</span>)
+        new_ids.append(nxt.item())
+    
+    <span class="keyword">return</span> [colourps[i] <span class="keyword">for</span> i <span class="keyword">in</span> new_ids]
+
+prompt = torch.LongTensor([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>]])  <span class="comment"># red, orange, yellow</span>
+<span class="builtin">print</span>(<span class="string">"Before LoRA →"</span>, generate(model, prompt)[<span class="number">0</span>])</code></pre>
+        </div>
+
+        <h3>4.4 Replace Layer With LoRA Wrapper</h3>
+        <div class="code-block-wrapper">
+            <div class="code-header">
+                <span class="code-language">Python</span>
+                <button class="copy-button" onclick="copyCode(this)">
+                    <span>📋 Copy</span>
+                </button>
+            </div>
+            <pre><code><span class="keyword">class</span> <span class="class-name">LoRALinear</span>(torch.nn.Module):
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="self">self</span>, base_layer, rank=<span class="number">4</span>):
+        <span class="builtin">super</span>().__init__()
+        <span class="self">self</span>.base = base_layer
+        <span class="self">self</span>.base.weight.requires_grad = <span class="builtin">False</span>  <span class="comment"># Freeze original</span>
+        
+        in_dim, out_dim = base_layer.weight.shape
+        
+        <span class="comment"># Low-rank matrices</span>
+        <span class="self">self</span>.A = torch.nn.Parameter(torch.randn(in_dim, rank) * <span class="number">0.01</span>)
+        <span class="self">self</span>.B = torch.nn.Parameter(torch.zeros(rank, out_dim))
+    
+    <span class="keyword">def</span> <span class="function">forward</span>(<span class="self">self</span>, x):
+        <span class="keyword">return</span> <span class="self">self</span>.base(x) + x @ <span class="self">self</span>.A @ <span class="self">self</span>.B
+
+<span class="comment"># Replace the linear layer</span>
+model.linear = LoRALinear(model.linear, rank=<span class="number">4</span>)</code></pre>
+        </div>
+
+        <h3>4.5 Train Only the Patch (200 steps)</h3>
+        <div class="code-block-wrapper">
+            <div class="code-header">
+                <span class="code-language">Python</span>
+                <button class="copy-button" onclick="copyCode(this)">
+                    <span>📋 Copy</span>
+                </button>
+            </div>
+            <pre><code><span class="comment"># Train only LoRA parameters</span>
+optim = torch.optim.AdamW([model.linear.A, model.linear.B], lr=<span class="number">1e-3</span>)
+
+target = torch.LongTensor([<span class="number">8</span>])  <span class="comment"># "marigold"</span>
+
+<span class="keyword">for</span> _ <span class="keyword">in</span> tqdm(<span class="builtin">range</span>(<span class="number">200</span>)):
+    logits = model(prompt)
+    loss = F.cross_entropy(logits[:, -<span class="number">1</span>, :], target)
+    loss.backward()
+    optim.step()
+    optim.zero_grad()
+
+<span class="builtin">print</span>(<span class="string">"After LoRA →"</span>, generate(model, prompt)[<span class="number">0</span>])</code></pre>
+        </div>
+
+        <h2>5. How Small Is the Patch?</h2>
+        <div class="code-block-wrapper">
+            <div class="code-header">
+                <span class="code-language">Python</span>
+                <button class="copy-button" onclick="copyCode(this)">
+                    <span>📋 Copy</span>
+                </button>
+            </div>
+            <pre><code><span class="keyword">import</span> tempfile, os
+
+<span class="keyword">def</span> <span class="function">model_size_mb</span>(module):
+    <span class="keyword">with</span> tempfile.NamedTemporaryFile(suffix=<span class="string">".pt"</span>, delete=<span class="builtin">False</span>) <span class="keyword">as</span> tmp:
+        torch.save(module.state_dict(), tmp.name)
+        mb = os.path.getsize(tmp.name) / <span class="number">1024</span> / <span class="number">1024</span>
+        os.remove(tmp.name)
+    <span class="keyword">return</span> mb
+
+base_mb = model_size_mb(ColourModel())
+
+state = {<span class="string">"A"</span>: model.linear.A, <span class="string">"B"</span>: model.linear.B}
+<span class="keyword">with</span> tempfile.NamedTemporaryFile(suffix=<span class="string">".pt"</span>, delete=<span class="builtin">False</span>) <span class="keyword">as</span> tmp:
+    torch.save(state, tmp.name)
+    adapter_mb = os.path.getsize(tmp.name)/<span class="number">1024</span>/<span class="number">1024</span>
+    os.remove(tmp.name)
+
+<span class="builtin">print</span>(<span class="string">f"Base model: </span><span class="operator">{</span>base_mb<span class="operator">:</span>.2f<span class="operator">}</span><span class="string"> MB"</span>)
+<span class="builtin">print</span>(<span class="string">f"LoRA adapter: </span><span class="operator">{</span>adapter_mb<span class="operator">:</span>.2f<span class="operator">}</span><span class="string"> MB (</span><span class="operator">{</span>adapter_mb/base_mb*<span class="number">100</span><span class="operator">:</span>.1f<span class="operator">}</span><span class="string">%)"</span>)</code></pre>
+        </div>
+
+        <p><strong>Typical result:</strong> 0.8% of the original model size.</p>
+
+        <h2>6. Real LLMs - Storage Comparison</h2>
+        
+        <div class="highlight-box">
+            <h3>Key Findings:</h3>
+            <ul>
+                <li><strong>Massive savings:</strong> LoRA reduces storage from gigabytes to just a few megabytes — a ~99.9% reduction</li>
+                <li><strong>Scales with model size:</strong> Even as the base model grows from 3B → 11B parameters, the LoRA adapter size grows very modestly</li>
+                <li><strong>Practical implication:</strong> Using LoRA, you could maintain dozens of fine-tuned versions of a 20 GB model while only consuming a few hundred MB total</li>
+            </ul>
+        </div>
+
+        <p>Inference memory overhead &lt; 1%. Training is faster since fewer parameters need to be updated.</p>
+
+        <h2>7. Key Takeaway</h2>
+        <div class="highlight-box">
+            <p><strong>LoRA turns "every task needs a new model" into "every task needs a postcard-sized patch."</strong></p>
+            <p>If you can email a 30 KB image, you can now email a 30 KB neural-network patch that transforms a generic LLM into a specialist — without touching the original weights.</p>
+        </div>
+
+        <p>And this is just the beginning. Next, we'll explore <strong>Multi-LoRA</strong> and <strong>LoRA-X</strong>, techniques that let you stack, mix, and serve dozens of adapters on a single model efficiently — so your LLM can handle multiple personalized tasks simultaneously without blowing up memory or slowing down inference.</p>
+
+        <p><strong>Happy patching — and stay tuned for the next level!</strong></p>
+
+        <div class="article-cta">
+            <h3>Need Help Fine-Tuning Your LLMs?</h3>
+            <p>Our team specializes in production-ready LLM implementations, including LoRA fine-tuning, RAG systems, and multi-agent architectures.</p>
+            <a href="index.html#contact" class="cta-button">Let's Talk</a>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments-section">
+            <h2>💬 Discussion & Comments</h2>
+            <p style="color: #666; margin-bottom: 2rem;">Share your thoughts, ask questions, or discuss this article with the community!</p>
+            
+            <!-- Giscus Comments Widget -->
+            <div class="giscus-container">
+                <!-- 
+                TO ENABLE COMMENTS:
+                
+                1. Go to https://giscus.app/
+                2. Enter your GitHub repo (e.g., your-username/phi-ai-website)
+                3. Enable GitHub Discussions in your repo settings
+                4. Copy the generated script and replace this placeholder
+                
+                The script will look like this:
+                
+                <script src="https://giscus.app/client.js"
+                        data-repo="your-username/your-repo"
+                        data-repo-id="YOUR_REPO_ID"
+                        data-category="Blog Comments"
+                        data-category-id="YOUR_CATEGORY_ID"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="top"
+                        data-theme="light"
+                        data-lang="en"
+                        data-loading="lazy"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+                -->
+                
+                <!-- Temporary placeholder until you set up Giscus -->
+                <div class="comments-placeholder">
+                    <div class="placeholder-icon">💬</div>
+                    <h3>Comments Coming Soon!</h3>
+                    <p>We're setting up GitHub Discussions for comments and reactions.</p>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">
+                        In the meantime, feel free to reach out via our <a href="index.html#contact" style="color: #6B7FFF;">contact page</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Phi.ai - AI Collective. All rights reserved.</p>
+            <p>Cairo, Egypt | Elite AI & Machine Learning Solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyCode(button) {
+            // Find the code block
+            const codeBlock = button.closest('.code-block-wrapper').querySelector('code');
+            const text = codeBlock.textContent;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(text).then(() => {
+                // Change button text
+                const buttonText = button.querySelector('span');
+                const originalText = buttonText.textContent;
+                buttonText.textContent = '✓ Copied!';
+                button.classList.add('copied');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    buttonText.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</body>
+</html>
