@@ -1,490 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+    <script>var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Phi-ai - ML & Computer Vision Experts</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .hero {
-            padding: 6rem 0;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-            color: #000;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s backwards;
-            color: #000;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        section {
-            padding: 5rem 0;
-            background: white;
-        }
-
-        section:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .team-member {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .team-member:hover {
-            transform: scale(1.05);
-        }
-
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
-        }
-
-        .team-member h3 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .role {
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .skill-tag {
-            background: #e8eaf6;
-            color: #667eea;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: #667eea;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #764ba2;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 2rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+    <meta name="description" content="Phi.AI — Senior AI engineers based in Cairo, Egypt. We build computer vision, generative AI, geospatial, and production ML systems. Let's talk about your project.">
+    <title>Phi.ai - AI Engineering & Consulting</title>
+    <link rel="icon" type="image/svg+xml" href="Phi_ai_Dots_Clean.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
     <header>
-        <nav class="container">
-            <div class="logo">Phi.AI</div>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <nav class="container" aria-label="Main navigation">
+            <div class="logo-container">
+                <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" role="img" aria-label="Phi.ai logo">
+                    <defs>
+                        <filter id="dotGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Network dots icon -->
+                    <g transform="translate(80, 70)">
+                        <!-- Connection lines (very subtle) -->
+                        <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+                        <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+
+                        <!-- Dots in network pattern -->
+                        <circle class="dot" cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                        <circle class="dot" cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    </g>
+
+                    <!-- Logo text - centered in frame -->
+                    <text x="300" y="90" font-family="'Roboto', 'Segoe UI', Arial, sans-serif" font-size="72" fill="currentColor" font-weight="400" text-anchor="middle">
+                        <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                    </text>
+
+                </svg>
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            </div>
         </nav>
     </header>
 
+    <main>
     <section class="hero">
         <div class="container">
-            <h1>Elite AI & Computer Vision Solutions</h1>
-            <p>Transforming businesses with cutting-edge machine learning and deep learning expertise</p>
-            <a href="#contact" class="cta-button">Start Your Project</a>
+            <div class="hero-content">
+                <span class="hero-badge">AI Engineering & Consulting</span>
+                <h1>Discover the Future of <span class="highlight">Artificial Intelligence</span></h1>
+                <p>Specialists in computer vision, generative AI, machine learning, and intelligent software solutions.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-button">Let's Talk <span class="btn-arrow">&rarr;</span></a>
+                    <a href="#services" class="cta-button secondary">What We Know</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="services">
+    <section id="services" class="section-alt reveal">
         <div class="container">
-            <h2>Our Services</h2>
+            <h2>What We Work On</h2>
+            <p class="section-subtitle">These are the areas we've spent years working in — and what we can help you build</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🤖</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
                     <h3>Generative AI</h3>
-                    <p>Advanced LLM integration, RAG systems, and AI-powered automation for enterprise applications</p>
+                    <p>We build RAG pipelines, agentic systems, and LLM-powered tools. We know how to make them reliable, not just demo-ready.</p>
+                    <a href="rag_agentic_ai_projects.html" class="service-link">View Projects →</a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">👁️</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+                        </svg>
+                    </div>
                     <h3>Computer Vision</h3>
-                    <p>Object detection, tracking, segmentation, and custom vision models for real-world applications</p>
+                    <p>Object detection, tracking, segmentation — we've trained and deployed these models in messy, real-world conditions.</p>
+                    <a href="computer_vision_projects.html" class="service-link">View Projects →</a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🛰️</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
                     <h3>Geospatial AI</h3>
-                    <p>Satellite image analysis, land cover mapping, and environmental monitoring solutions</p>
+                    <p>Satellite imagery analysis, land cover classification, change detection — we've worked with the data and know the challenges.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🚗</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            <circle cx="12" cy="12" r="1" fill="white"/>
+                            <circle cx="8" cy="8" r="1" fill="white"/>
+                            <circle cx="16" cy="8" r="1" fill="white"/>
+                            <circle cx="8" cy="16" r="1" fill="white"/>
+                            <circle cx="16" cy="16" r="1" fill="white"/>
+                        </svg>
+                    </div>
                     <h3>LiDAR & Simulation</h3>
-                    <p>Physics-based sensor simulation, point cloud processing, and automotive AI systems</p>
+                    <p>3D point cloud processing, physics-based sensor simulation — hands-on experience with autonomous driving and robotics data.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🏥</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
                     <h3>Medical AI</h3>
-                    <p>3D medical image segmentation, statistical shape modeling, and diagnostic assistance tools</p>
+                    <p>3D medical image segmentation, statistical shape modeling — we've worked on clinical research problems and understand the stakes.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">⚡</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
+                            <polyline points="7.5 19.79 7.5 14.6 3 12"/>
+                            <polyline points="21 12 16.5 14.6 16.5 19.79"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
                     <h3>MLOps & Deployment</h3>
-                    <p>Production-ready model deployment, Docker containerization, and CI/CD pipelines</p>
+                    <p>Getting models out of notebooks and into production. Docker, CI/CD, monitoring, versioning — the unglamorous work that makes AI actually useful.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="team">
+    <section id="about" class="reveal">
         <div class="container">
-            <h2>Meet Our Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="avatar">BA</div>
-                    <h3>Basem Abusaif</h3>
-                    <p class="role">Senior Data Scientist</p>
-                    <p>Specialist in LiDAR simulation, generative models, and physics-based AI systems</p>
-                    <div class="skills">
-                        <span class="skill-tag">GANs</span>
-                        <span class="skill-tag">Diffusion Models</span>
-                        <span class="skill-tag">LiDAR</span>
-                        <span class="skill-tag">ONNX</span>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/basem-mahmoud-abusaif" target="_blank">🔗</a>
-                        <a href="https://github.com/Basem-Mahmoud" target="_blank">💻</a>
-                    </div>
+            <h2>Who We Are</h2>
+            <p class="section-subtitle">Senior AI engineers based in Cairo, Egypt. We started Phi.AI to make good engineering accessible — without big consultancy overhead.</p>
+            <div class="about-content">
+                <div class="about-block">
+                    <h3>Our Background</h3>
+                    <p>Years of hands-on experience across computer vision, LLMs, healthcare, autonomous driving, and geospatial analysis. This isn't theory — it's what we do.</p>
                 </div>
-
-                <div class="team-member">
-                    <div class="avatar">MS</div>
-                    <h3>Mohamed Seyam</h3>
-                    <p class="role">AI Engineer</p>
-                    <p>Expert in computer vision, geospatial analytics, and vision-language models</p>
-                    <div class="skills">
-                        <span class="skill-tag">Satellite Imaging</span>
-                        <span class="skill-tag">VLMs</span>
-                        <span class="skill-tag">Edge AI</span>
-                        <span class="skill-tag">Medical AI</span>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/mohamed-seyam-bb185a230" target="_blank">🔗</a>
-                        <a href="https://github.com/mohamed-seyam" target="_blank">💻</a>
-                    </div>
+                <div class="about-block">
+                    <h3>How We Work</h3>
+                    <p>We write code, debug pipelines, and stay until the model works in your environment. No slide decks, no hand-offs. You work directly with the people who build.</p>
                 </div>
-
-                <div class="team-member">
-                    <div class="avatar">MA</div>
-                    <h3>Mohamed Abd-Elnaser</h3>
-                    <p class="role">Senior CV Engineer</p>
-                    <p>Specialist in EKYC systems, sports analytics, and real-time tracking solutions</p>
-                    <div class="skills">
-                        <span class="skill-tag">OCR</span>
-                        <span class="skill-tag">Object Tracking</span>
-                        <span class="skill-tag">YOLO</span>
-                        <span class="skill-tag">Action Recognition</span>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/mohammed-abdulnaser" target="_blank">🔗</a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="avatar">KY</div>
-                    <h3>Kerolis Youssif Nasr</h3>
-                    <p class="role">Senior ML Engineer</p>
-                    <p>Expert in RAG systems, LLM applications, and scalable ML infrastructure</p>
-                    <div class="skills">
-                        <span class="skill-tag">RAG</span>
-                        <span class="skill-tag">LangGraph</span>
-                        <span class="skill-tag">MLOps</span>
-                        <span class="skill-tag">AWS</span>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/kerolis-youssif-38280013a" target="_blank">🔗</a>
-                    </div>
+                <div class="about-block">
+                    <h3>Why Phi.AI</h3>
+                    <p>Named after the golden ratio — balance and proportion. The right solution at the right scale, nothing over-engineered, nothing half-done.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="expertise">
+    <section id="contact" class="contact-section reveal">
         <div class="container">
-            <h2>Our Expertise</h2>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <p>Years Combined Experience</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <p>Projects Delivered</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <p>Industries Served</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <p>Client Satisfaction</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
+            <h2>Let's Talk</h2>
+            <p class="section-subtitle">No sales pitch — just a conversation between engineers.</p>
             <form class="contact-form" action="https://formsubmit.co/phi.ai2025@outlook.com" method="POST">
-                <input type="hidden" name="_subject" value="New Project Inquiry from Phi.AI Website">
+                <input type="hidden" name="_subject" value="New Message from Phi.ai Website">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 
@@ -501,38 +207,60 @@
                     <input type="text" id="company" name="company">
                 </div>
                 <div class="form-group">
-                    <label for="message">Project Details</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <label for="message">What's on your mind?</label>
+                    <textarea id="message" name="message" required placeholder="Tell us what you're working on or thinking about..."></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>
     </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; Phi.ai- AI Collective. All rights reserved.</p>
-            <p>Cairo, Egypt | Elite AI & Machine Learning Solutions</p>
+            <svg class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 25 600 80" aria-hidden="true">
+                <defs>
+                    <filter id="dotGlowFooter">
+                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <!-- Network dots icon -->
+                <g transform="translate(80, 70)">
+                    <!-- Connection lines (very subtle) -->
+                    <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+                    <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+
+                    <!-- Dots in network pattern -->
+                    <circle cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    <circle cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                </g>
+
+                <!-- Logo text - centered in frame -->
+                <text x="300" y="90" font-family="'Roboto', 'Segoe UI', Arial, sans-serif" font-size="72" fill="#ffffff" font-weight="400" text-anchor="middle">
+                    <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                </text>
+
+            </svg>
+            <p class="footer-copyright">&copy; 2025-2026 Phi.ai - AI Collective. All rights reserved.</p>
+            <p>Cairo, Egypt | AI Engineering & Consulting</p>
         </div>
     </footer>
 
-    <script>
-        function handleSubmit(e) {
-            e.preventDefault();
-            alert('Thank you for your interest! We will contact you soon.');
-            e.target.reset();
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical articles from Phi.AI — deep dives into LLMs, computer vision, RAG systems, and production ML.">
+    <title>Blog - Phi.ai</title>
+    <link rel="icon" type="image/svg+xml" href="Phi_ai_Dots_Clean.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <header>
+        <nav class="container" aria-label="Main navigation">
+            <a href="index.html" class="logo-container">
+                <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" role="img" aria-label="Phi.ai logo">
+                    <defs>
+                        <filter id="dotGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g transform="translate(80, 70)">
+                        <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+                        <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+                        <circle class="dot" cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                        <circle class="dot" cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    </g>
+                    <text x="300" y="90" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="72" fill="currentColor" font-weight="800" text-anchor="middle">
+                        <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                    </text>
+                </svg>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1><span class="highlight">Blog</span></h1>
+                <p>Technical articles on what we're learning and building — LLMs, computer vision, and production ML.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid">
+
+                <!-- Blog Post: LoRA Article -->
+                <div class="blog-card" onclick="window.location.href='blog-lora.html'">
+                    <div class="blog-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 200">
+                            <defs>
+                                <linearGradient id="lora-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="200" fill="url(#lora-grad)"/>
+                            <circle cx="100" cy="100" r="35" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <circle cx="300" cy="100" r="35" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <line x1="135" y1="100" x2="265" y2="100" stroke="#FFD700" stroke-width="3"/>
+                            <line x1="135" y1="90" x2="265" y2="90" stroke="#FFD700" stroke-width="1.5" opacity="0.4"/>
+                            <line x1="135" y1="110" x2="265" y2="110" stroke="#FFD700" stroke-width="1.5" opacity="0.4"/>
+                            <text x="100" y="107" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">W</text>
+                            <text x="200" y="78" fill="#FFD700" font-size="16" text-anchor="middle" font-weight="bold">A×B</text>
+                            <text x="300" y="107" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">W'</text>
+                        </svg>
+                        <div class="blog-meta">
+                            <span class="blog-category">LLM</span>
+                            <span class="blog-date">Jan 2025</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">A Gentle Guide to LoRA: Fine-Tuning Billion-Parameter Models Without Copying Them</h3>
+                        <p class="blog-read-time">6 min read</p>
+                        <p class="blog-excerpt">
+                            How LoRA transforms fine-tuning from "one massive model per task" to "one tiny patch per task," reducing storage by 99.9% while maintaining performance.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">LLM</span>
+                            <span class="tag">Fine-Tuning</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <a href="blog-lora.html" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post: YOLO -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 200">
+                            <defs>
+                                <linearGradient id="cv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="200" fill="url(#cv-grad)"/>
+                            <rect x="150" y="55" width="100" height="80" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2" rx="8"/>
+                            <circle cx="200" cy="95" r="22" fill="none" stroke="#fff" stroke-width="2"/>
+                            <circle cx="200" cy="95" r="12" fill="rgba(255,255,255,0.2)"/>
+                            <path d="M 185 140 L 215 140 L 222 152 L 178 152 Z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="1.5"/>
+                        </svg>
+                        <div class="blog-meta">
+                            <span class="blog-category">Computer Vision</span>
+                            <span class="blog-date">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">YOLO Evolution: From v5 to v11 — What Changed and Why It Matters</h3>
+                        <p class="blog-read-time">8 min read</p>
+                        <p class="blog-excerpt">
+                            A comparison of YOLO architectures from v5 through v11 — performance improvements, architectural changes, and deployment considerations.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">YOLO</span>
+                            <span class="tag">Object Detection</span>
+                        </div>
+                        <span class="read-more">Coming Soon →</span>
+                    </div>
+                </div>
+
+                <!-- Blog Post: RAG -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 200">
+                            <defs>
+                                <linearGradient id="rag-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#38f9d7;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="200" fill="url(#rag-grad)"/>
+                            <circle cx="200" cy="100" r="40" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <rect x="60" y="40" width="30" height="40" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <rect x="310" y="40" width="30" height="40" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <rect x="60" y="120" width="30" height="40" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <rect x="310" y="120" width="30" height="40" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <line x1="90" y1="60" x2="165" y2="85" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="310" y1="60" x2="235" y2="85" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="90" y1="140" x2="165" y2="115" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="310" y1="140" x2="235" y2="115" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                        </svg>
+                        <div class="blog-meta">
+                            <span class="blog-category">RAG</span>
+                            <span class="blog-date">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Building Production-Ready RAG: Beyond Basic Retrieval</h3>
+                        <p class="blog-read-time">10 min read</p>
+                        <p class="blog-excerpt">
+                            Hybrid search, reranking, chunking strategies, and evaluation techniques that actually work when you move RAG from prototype to production.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">RAG</span>
+                            <span class="tag">LangChain</span>
+                            <span class="tag">Vector DB</span>
+                        </div>
+                        <span class="read-more">Coming Soon →</span>
+                    </div>
+                </div>
+
+                <!-- Blog Post: LiDAR -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 200">
+                            <defs>
+                                <linearGradient id="lidar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="200" fill="url(#lidar-grad)"/>
+                            <circle cx="100" cy="60" r="2.5" fill="#fff"/>
+                            <circle cx="150" cy="70" r="2.5" fill="#fff"/>
+                            <circle cx="200" cy="80" r="2.5" fill="#fff"/>
+                            <circle cx="250" cy="85" r="2.5" fill="#fff"/>
+                            <circle cx="300" cy="95" r="2.5" fill="#fff"/>
+                            <circle cx="120" cy="105" r="2.5" fill="#fff"/>
+                            <circle cx="180" cy="115" r="2.5" fill="#fff"/>
+                            <circle cx="240" cy="120" r="2.5" fill="#fff"/>
+                            <circle cx="160" cy="140" r="2.5" fill="#fff"/>
+                            <circle cx="220" cy="148" r="2.5" fill="#fff"/>
+                            <circle cx="280" cy="130" r="2.5" fill="#fff"/>
+                            <circle cx="140" cy="90" r="2.5" fill="#fff"/>
+                            <line x1="60" y1="100" x2="340" y2="100" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                            <line x1="200" y1="35" x2="200" y2="170" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                        </svg>
+                        <div class="blog-meta">
+                            <span class="blog-category">Simulation</span>
+                            <span class="blog-date">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Physics-Based LiDAR Simulation for Autonomous Vehicles</h3>
+                        <p class="blog-read-time">12 min read</p>
+                        <p class="blog-excerpt">
+                            Simulating LiDAR sensors using physics-based models and generative approaches — and how it applies to automotive AI development.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">LiDAR</span>
+                            <span class="tag">Simulation</span>
+                            <span class="tag">Autonomous Driving</span>
+                        </div>
+                        <span class="read-more">Coming Soon →</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <svg class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" aria-hidden="true">
+                <defs>
+                    <filter id="dotGlowFooter">
+                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g transform="translate(80, 70)">
+                    <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+                    <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+                    <circle cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    <circle cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                </g>
+                <text x="300" y="90" font-family="'Roboto', 'Segoe UI', Arial, sans-serif" font-size="72" fill="#ffffff" font-weight="400" text-anchor="middle">
+                    <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                </text>
+            </svg>
+            <p class="footer-copyright">&copy; 2025-2026 Phi.ai - AI Collective. All rights reserved.</p>
+            <p>Cairo, Egypt | AI Engineering & Consulting</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

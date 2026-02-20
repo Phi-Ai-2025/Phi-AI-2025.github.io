@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAG and agentic AI capabilities at Phi.AI — retrieval-augmented generation, multi-agent systems, and LLM-powered tools.">
+    <title>RAG & Agentic AI - Phi.ai</title>
+    <link rel="icon" type="image/svg+xml" href="Phi_ai_Dots_Clean.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+<body>
+    <header>
+        <nav class="container" aria-label="Main navigation">
+            <a href="index.html" class="logo-container">
+                <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" role="img" aria-label="Phi.ai logo">
+                    <defs>
+                        <filter id="dotGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g transform="translate(80, 70)">
+                        <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+                        <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+                        <circle class="dot" cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                        <circle class="dot" cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    </g>
+                    <text x="300" y="90" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="72" fill="currentColor" font-weight="800" text-anchor="middle">
+                        <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                    </text>
+                </svg>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1><span class="highlight">RAG & Agentic AI</span></h1>
+                <p>Retrieval-augmented generation, multi-agent orchestration, and LLM-powered tools — built to work reliably, not just demo well.</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> / RAG & Agentic AI
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="rag">RAG Systems</button>
+                <button class="filter-btn" data-filter="agents">AI Agents</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: Enterprise Knowledge RAG -->
+                <div class="project-card" data-category="rag">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#grad1)"/>
+                            <circle cx="200" cy="110" r="50" fill="rgba(255,255,255,0.1)" stroke="#fff" stroke-width="2"/>
+                            <rect x="90" y="45" width="25" height="35" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <rect x="285" y="45" width="25" height="35" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <rect x="90" y="140" width="25" height="35" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <rect x="285" y="140" width="25" height="35" fill="rgba(255,255,255,0.25)" rx="3"/>
+                            <line x1="115" y1="62" x2="160" y2="90" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+                            <line x1="285" y1="62" x2="240" y2="90" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+                            <line x1="115" y1="158" x2="160" y2="130" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+                            <line x1="285" y1="158" x2="240" y2="130" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+                            <text x="200" y="116" fill="#fff" font-size="28" text-anchor="middle" font-weight="bold">RAG</text>
+                        </svg>
+                        <div class="project-category">RAG</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Enterprise Knowledge Assistant</h3>
+                        <p class="project-description">RAG system for internal documentation — hybrid search with vector + keyword retrieval, contextual reranking, and source citation.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Pinecone</span>
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Multi-Agent Research System -->
+                <div class="project-card" data-category="agents">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#grad2)"/>
+                            <circle cx="100" cy="80" r="28" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <circle cx="300" cy="80" r="28" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <circle cx="200" cy="150" r="28" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <line x1="128" y1="80" x2="272" y2="80" stroke="#fff" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                            <line x1="120" y1="100" x2="180" y2="130" stroke="#fff" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                            <line x1="280" y1="100" x2="220" y2="130" stroke="#fff" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                            <text x="100" y="86" fill="#fff" font-size="18" text-anchor="middle" font-weight="bold">R</text>
+                            <text x="300" y="86" fill="#fff" font-size="18" text-anchor="middle" font-weight="bold">W</text>
+                            <text x="200" y="156" fill="#fff" font-size="18" text-anchor="middle" font-weight="bold">O</text>
+                        </svg>
+                        <div class="project-category">Agents</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Multi-Agent Research System</h3>
+                        <p class="project-description">Specialized agents for web research, analysis, and report generation — orchestrated with LangGraph for complex multi-step reasoning.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">LangGraph</span>
+                            <span class="tech-tag">Claude</span>
+                            <span class="tech-tag">Tavily</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Domain-Specific RAG -->
+                <div class="project-card" data-category="rag">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#grad3)"/>
+                            <rect x="80" y="50" width="70" height="100" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="1.5" rx="4"/>
+                            <rect x="165" y="50" width="70" height="100" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="1.5" rx="4"/>
+                            <rect x="250" y="50" width="70" height="100" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="1.5" rx="4"/>
+                            <line x1="90" y1="70" x2="140" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="90" y1="82" x2="140" y2="82" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="175" y1="70" x2="225" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="175" y1="82" x2="225" y2="82" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="260" y1="70" x2="310" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="260" y1="82" x2="310" y2="82" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                            <circle cx="200" cy="185" r="18" fill="none" stroke="#fff" stroke-width="2"/>
+                            <line x1="213" y1="198" x2="225" y2="210" stroke="#fff" stroke-width="2"/>
+                        </svg>
+                        <div class="project-category">RAG</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Domain-Specific Document RAG</h3>
+                        <p class="project-description">Specialized retrieval for technical and legal documents — citation extraction, clause analysis, and precise source attribution.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">LlamaIndex</span>
+                            <span class="tech-tag">Weaviate</span>
+                            <span class="tech-tag">GPT-4</span>
+                            <span class="tech-tag">spaCy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Workflow Automation Agent -->
+                <div class="project-card" data-category="agents">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#30cfd0;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#330867;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#grad4)"/>
+                            <circle cx="100" cy="110" r="25" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <circle cx="200" cy="110" r="25" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <circle cx="300" cy="110" r="25" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2"/>
+                            <line x1="125" y1="110" x2="175" y2="110" stroke="#fff" stroke-width="2"/>
+                            <line x1="225" y1="110" x2="275" y2="110" stroke="#fff" stroke-width="2"/>
+                            <polygon points="175,105 175,115 170,110" fill="#fff"/>
+                            <polygon points="275,105 275,115 270,110" fill="#fff"/>
+                            <text x="100" y="116" fill="#fff" font-size="16" text-anchor="middle" font-weight="bold">IN</text>
+                            <text x="200" y="116" fill="#fff" font-size="16" text-anchor="middle" font-weight="bold">AI</text>
+                            <text x="300" y="116" fill="#fff" font-size="16" text-anchor="middle" font-weight="bold">OUT</text>
+                        </svg>
+                        <div class="project-category">Agents</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Workflow Automation Agent</h3>
+                        <p class="project-description">Autonomous agent with tool use, API integration, and human-in-the-loop verification for complex business process automation.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">LangGraph</span>
+                            <span class="tech-tag">Claude</span>
+                            <span class="tech-tag">n8n</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Conversational AI -->
+                <div class="project-card" data-category="agents rag">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#grad5)"/>
+                            <rect x="80" y="50" width="130" height="35" fill="rgba(107,127,255,0.2)" rx="18"/>
+                            <rect x="190" y="100" width="130" height="35" fill="rgba(255,255,255,0.5)" rx="18"/>
+                            <rect x="80" y="150" width="130" height="35" fill="rgba(107,127,255,0.2)" rx="18"/>
+                            <line x1="145" y1="85" x2="255" y2="100" stroke="rgba(107,127,255,0.3)" stroke-width="1.5"/>
+                            <line x1="255" y1="135" x2="145" y2="150" stroke="rgba(107,127,255,0.3)" stroke-width="1.5"/>
+                        </svg>
+                        <div class="project-category">RAG + Agents</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Conversational Support System</h3>
+                        <p class="project-description">RAG-powered chatbot with tool use for knowledge retrieval, ticket routing, and contextual follow-ups across conversation turns.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Anthropic</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">FastAPI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Code Assistant Agent -->
+                <div class="project-card" data-category="agents">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#38f9d7;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#grad6)"/>
+                            <rect x="70" y="30" width="260" height="160" fill="rgba(0,0,0,0.15)" rx="8"/>
+                            <rect x="70" y="30" width="260" height="25" fill="rgba(0,0,0,0.2)" rx="8"/>
+                            <circle cx="88" cy="42" r="4" fill="#ff5f56"/>
+                            <circle cx="102" cy="42" r="4" fill="#ffbd2e"/>
+                            <circle cx="116" cy="42" r="4" fill="#27c93f"/>
+                            <line x1="90" y1="80" x2="160" y2="80" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="105" y1="100" x2="200" y2="100" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="105" y1="120" x2="180" y2="120" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="90" y1="140" x2="150" y2="140" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                        </svg>
+                        <div class="project-category">Agents</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Code Assistant Agent</h3>
+                        <p class="project-description">Agent that generates, tests, and iterates on code with built-in debugging — using tool calls to run tests and refine output.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">GitHub API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <svg class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" aria-hidden="true">
+                <defs>
+                    <filter id="dotGlowFooter">
+                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g transform="translate(80, 70)">
+                    <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+                    <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+                    <circle cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    <circle cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                </g>
+                <text x="300" y="90" font-family="'Roboto', 'Segoe UI', Arial, sans-serif" font-size="72" fill="#ffffff" font-weight="400" text-anchor="middle">
+                    <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                </text>
+            </svg>
+            <p class="footer-copyright">&copy; 2025-2026 Phi.ai - AI Collective. All rights reserved.</p>
+            <p>Cairo, Egypt | AI Engineering & Consulting</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>

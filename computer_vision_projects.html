@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Computer vision capabilities at Phi.AI — object detection, tracking, segmentation, medical imaging, and geospatial analysis.">
+    <title>Computer Vision - Phi.ai</title>
+    <link rel="icon" type="image/svg+xml" href="Phi_ai_Dots_Clean.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+<body>
+    <header>
+        <nav class="container" aria-label="Main navigation">
+            <a href="index.html" class="logo-container">
+                <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" role="img" aria-label="Phi.ai logo">
+                    <defs>
+                        <filter id="dotGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g transform="translate(80, 70)">
+                        <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.15"/>
+                        <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+                        <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.1"/>
+                        <circle class="dot" cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                        <circle class="dot" cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlow)"/>
+                        <circle class="dot" cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                        <circle class="dot" cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                        <circle class="dot" cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    </g>
+                    <text x="300" y="90" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="72" fill="currentColor" font-weight="800" text-anchor="middle">
+                        <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                    </text>
+                </svg>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1><span class="highlight">Computer Vision</span></h1>
+                <p>Detection, tracking, segmentation, and visual understanding — trained and deployed in real-world conditions.</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> / Computer Vision
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="detection">Detection</button>
+                <button class="filter-btn" data-filter="segmentation">Segmentation</button>
+                <button class="filter-btn" data-filter="medical">Medical</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: Object Detection & Tracking -->
+                <div class="project-card" data-category="detection">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="cv1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#cv1)"/>
+                            <rect x="60" y="50" width="280" height="140" fill="rgba(255,255,255,0.08)" stroke="#fff" stroke-width="1.5" rx="4"/>
+                            <rect x="85" y="75" width="65" height="80" fill="none" stroke="#FFD700" stroke-width="2.5" stroke-dasharray="5,4"/>
+                            <rect x="180" y="70" width="55" height="70" fill="none" stroke="#00FF00" stroke-width="2.5" stroke-dasharray="5,4"/>
+                            <rect x="260" y="85" width="50" height="65" fill="none" stroke="#00BFFF" stroke-width="2.5" stroke-dasharray="5,4"/>
+                            <rect x="85" y="68" width="50" height="12" fill="rgba(255,215,0,0.7)" rx="2"/>
+                            <text x="110" y="77" fill="#000" font-size="8" text-anchor="middle" font-weight="bold">person</text>
+                            <rect x="180" y="63" width="35" height="12" fill="rgba(0,255,0,0.7)" rx="2"/>
+                            <text x="197" y="72" fill="#000" font-size="8" text-anchor="middle" font-weight="bold">car</text>
+                        </svg>
+                        <div class="project-category">Detection</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-Time Object Detection & Tracking</h3>
+                        <p class="project-description">Multi-object detection and tracking pipeline using YOLO + DeepSORT, optimized for real-time inference on edge devices.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">YOLOv8</span>
+                            <span class="tech-tag">DeepSORT</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">ONNX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Medical Image Segmentation -->
+                <div class="project-card" data-category="medical segmentation">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="cv2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#cv2)"/>
+                            <circle cx="200" cy="110" r="70" fill="rgba(255,255,255,0.08)" stroke="#fff" stroke-width="2"/>
+                            <ellipse cx="200" cy="110" rx="50" ry="65" fill="rgba(255,255,255,0.1)"/>
+                            <path d="M 165 80 Q 200 95 235 80" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                            <path d="M 165 140 Q 200 125 235 140" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                            <circle cx="185" cy="100" r="12" fill="rgba(255,80,80,0.25)" stroke="#FF5050" stroke-width="2"/>
+                            <circle cx="215" cy="120" r="10" fill="rgba(80,255,80,0.25)" stroke="#50FF50" stroke-width="2"/>
+                        </svg>
+                        <div class="project-category">Medical</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">3D Medical Image Segmentation</h3>
+                        <p class="project-description">Volumetric segmentation for MRI and CT scans using 3D U-Net — trained on clinical datasets for tumor and organ delineation.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">3D U-Net</span>
+                            <span class="tech-tag">MONAI</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">DICOM</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Autonomous Driving Perception -->
+                <div class="project-card" data-category="detection segmentation">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="cv3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#cv3)"/>
+                            <rect x="0" y="140" width="400" height="80" fill="rgba(0,0,0,0.15)"/>
+                            <rect x="188" y="145" width="24" height="75" fill="rgba(255,255,255,0.2)"/>
+                            <rect x="100" y="155" width="55" height="35" fill="rgba(255,255,255,0.2)" rx="4"/>
+                            <rect x="250" y="160" width="45" height="30" fill="rgba(255,255,255,0.2)" rx="4"/>
+                            <rect x="95" y="150" width="65" height="45" fill="none" stroke="#00FF00" stroke-width="2.5"/>
+                            <rect x="245" y="155" width="55" height="40" fill="none" stroke="#00FF00" stroke-width="2.5"/>
+                            <line x1="100" y1="140" x2="200" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                            <line x1="300" y1="140" x2="200" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                        </svg>
+                        <div class="project-category">Detection</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Autonomous Driving Perception</h3>
+                        <p class="project-description">Real-time detection of vehicles, pedestrians, and traffic signs with lane segmentation — optimized for embedded inference.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">YOLO</span>
+                            <span class="tech-tag">TensorRT</span>
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">SegNet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Satellite Image Segmentation -->
+                <div class="project-card" data-category="segmentation">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="cv4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#38f9d7;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#cv4)"/>
+                            <rect x="60" y="30" width="280" height="170" fill="rgba(0,80,0,0.15)" stroke="#fff" stroke-width="1.5"/>
+                            <path d="M 80 50 L 160 50 L 160 120 L 80 120 Z" fill="rgba(34,139,34,0.35)" stroke="#fff" stroke-width="1.5"/>
+                            <path d="M 170 50 L 240 50 L 240 120 L 170 120 Z" fill="rgba(210,180,140,0.35)" stroke="#fff" stroke-width="1.5"/>
+                            <path d="M 250 50 L 320 50 L 320 120 L 250 120 Z" fill="rgba(0,100,200,0.3)" stroke="#fff" stroke-width="1.5"/>
+                            <path d="M 80 130 L 200 130 L 200 180 L 80 180 Z" fill="rgba(139,69,19,0.35)" stroke="#fff" stroke-width="1.5"/>
+                            <path d="M 210 130 L 320 130 L 320 180 L 210 180 Z" fill="rgba(34,139,34,0.25)" stroke="#fff" stroke-width="1.5"/>
+                        </svg>
+                        <div class="project-category">Segmentation</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Satellite Image Segmentation</h3>
+                        <p class="project-description">Land cover classification and change detection from satellite imagery using semantic segmentation and temporal analysis.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">DeepLabV3+</span>
+                            <span class="tech-tag">Sentinel-2</span>
+                            <span class="tech-tag">GDAL</span>
+                            <span class="tech-tag">PyTorch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Industrial Quality Control -->
+                <div class="project-card" data-category="detection">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="cv5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ffecd2;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#fcb69f;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#cv5)"/>
+                            <rect x="90" y="40" width="220" height="140" fill="rgba(0,80,0,0.2)" stroke="#333" stroke-width="1.5" rx="2"/>
+                            <rect x="110" y="60" width="25" height="18" fill="rgba(0,0,0,0.25)"/>
+                            <rect x="150" y="60" width="25" height="18" fill="rgba(0,0,0,0.25)"/>
+                            <rect x="190" y="60" width="25" height="18" fill="rgba(0,0,0,0.25)"/>
+                            <circle cx="122" cy="110" r="8" fill="rgba(0,0,0,0.25)"/>
+                            <circle cx="162" cy="110" r="8" fill="rgba(0,0,0,0.25)"/>
+                            <circle cx="202" cy="110" r="12" fill="none" stroke="#FF3333" stroke-width="2.5"/>
+                            <line x1="195" y1="103" x2="209" y2="117" stroke="#FF3333" stroke-width="2"/>
+                            <line x1="209" y1="103" x2="195" y2="117" stroke="#FF3333" stroke-width="2"/>
+                        </svg>
+                        <div class="project-category">Detection</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Industrial Defect Detection</h3>
+                        <p class="project-description">Anomaly detection for manufacturing quality control — custom CNN architectures trained to catch surface defects and assembly errors.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">ResNet</span>
+                            <span class="tech-tag">AutoEncoder</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Edge AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Statistical Shape Modeling -->
+                <div class="project-card" data-category="medical segmentation">
+                    <div class="project-image">
+                        <svg width="100%" height="100%" viewBox="0 0 400 220">
+                            <defs>
+                                <linearGradient id="cv6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="220" fill="url(#cv6)"/>
+                            <ellipse cx="150" cy="110" rx="50" ry="65" fill="none" stroke="rgba(107,127,255,0.4)" stroke-width="2"/>
+                            <ellipse cx="150" cy="110" rx="45" ry="60" fill="none" stroke="rgba(107,127,255,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                            <ellipse cx="250" cy="110" rx="50" ry="65" fill="none" stroke="rgba(200,80,80,0.4)" stroke-width="2"/>
+                            <ellipse cx="250" cy="110" rx="45" ry="60" fill="none" stroke="rgba(200,80,80,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                            <circle cx="150" cy="60" r="3" fill="rgba(107,127,255,0.6)"/>
+                            <circle cx="130" cy="80" r="3" fill="rgba(107,127,255,0.6)"/>
+                            <circle cx="170" cy="80" r="3" fill="rgba(107,127,255,0.6)"/>
+                            <circle cx="250" cy="60" r="3" fill="rgba(200,80,80,0.6)"/>
+                            <circle cx="230" cy="80" r="3" fill="rgba(200,80,80,0.6)"/>
+                            <circle cx="270" cy="80" r="3" fill="rgba(200,80,80,0.6)"/>
+                            <line x1="195" y1="110" x2="210" y2="110" stroke="rgba(0,0,0,0.3)" stroke-width="2"/>
+                            <polygon points="208,106 215,110 208,114" fill="rgba(0,0,0,0.3)"/>
+                        </svg>
+                        <div class="project-category">Medical</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Statistical Shape Modeling</h3>
+                        <p class="project-description">Point distribution models for anatomical shape analysis — used in clinical research for understanding shape variation across populations.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">PCA</span>
+                            <span class="tech-tag">VTK</span>
+                            <span class="tech-tag">SimpleITK</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">3D Slicer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <svg class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" aria-hidden="true">
+                <defs>
+                    <filter id="dotGlowFooter">
+                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g transform="translate(80, 70)">
+                    <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="0" y1="-30" x2="20" y2="-10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="20" y1="-10" x2="0" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.3"/>
+                    <line x1="-20" y1="-10" x2="-35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+                    <line x1="20" y1="-10" x2="35" y2="10" stroke="#6B7FFF" stroke-width="2" opacity="0.2"/>
+                    <circle cx="0" cy="-30" r="10" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="20" cy="-10" r="9" fill="#7B8FFF" opacity="0.9"/>
+                    <circle cx="0" cy="10" r="11" fill="#6B7FFF" filter="url(#dotGlowFooter)"/>
+                    <circle cx="-35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="35" cy="10" r="7" fill="#8B9FFF" opacity="0.7"/>
+                    <circle cx="-45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                    <circle cx="45" cy="-5" r="5" fill="#9BAFFF" opacity="0.5"/>
+                </g>
+                <text x="300" y="90" font-family="'Roboto', 'Segoe UI', Arial, sans-serif" font-size="72" fill="#ffffff" font-weight="400" text-anchor="middle">
+                    <tspan x="300">Phi</tspan><tspan fill="#6B7FFF">.ai</tspan>
+                </text>
+            </svg>
+            <p class="footer-copyright">&copy; 2025-2026 Phi.ai - AI Collective. All rights reserved.</p>
+            <p>Cairo, Egypt | AI Engineering & Consulting</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>
