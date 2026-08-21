@@ -8,7 +8,7 @@ Landing page for Phi.AI, built with React + Vite. The older hand-written pages
 ```bash
 npm install
 npm run dev      # http://localhost:5173
-npm run build    # outputs to dist/
+npm run build    # outputs to dist/ 
 npm run preview  # serve the built site
 ```
 
