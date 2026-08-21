@@ -142,6 +142,14 @@ export const about = {
   pitch:
     'We take on the AI side of your product or process — framing the problem, building the system, and running it in production. You work directly with the people building it.',
   pin: { value: 'Cairo, EG', label: 'working worldwide' },
+  // No photos and no headcount — the visual shows how you work with the team
+  // instead of how many people are in it.
+  link: {
+    label: 'Working with us',
+    from: { title: 'You', sub: 'your team' },
+    to: { title: 'Phi.AI', sub: 'the engineers building it' },
+    note: 'A direct line — no account managers, no hand-offs in between.',
+  },
   principles: [
     {
       num: '01',
