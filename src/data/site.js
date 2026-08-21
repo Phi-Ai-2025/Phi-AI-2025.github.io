@@ -45,10 +45,10 @@ export const services = {
       art: 'embed',
       title: 'AI Technical Arm',
       points: [
-        'AI expertise embedded directly into your team.',
+        'AI expertise injected directly into your team.',
         'Architecture, models, evaluation & technical guidance.',
       ],
-      link: 'Talk about embedding →',
+      link: 'Talk about injecting →',
       engagement: 'AI Technical Arm',
     },
     {
@@ -113,6 +113,7 @@ export const work = {
         'Hands off to a human with the full context attached.',
         'Multi-language support for regional customer bases.',
         'Call summaries and outcomes written straight into your CRM.',
+        'The same assistant answers over chat, not just voice.',
       ],
     },
     {
