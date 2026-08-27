@@ -2,7 +2,7 @@ import { contact } from '../data/site'
 
 // The form posts straight to FormSubmit, the same endpoint the previous site
 // used, so no backend is needed on Pages.
-const FORM_ENDPOINT = 'https://formsubmit.co/phi.ai2025@outlook.com'
+const FORM_ENDPOINT = 'https://formsubmit.co/info@phi-ai.co'
 
 export default function Contact({ engagement }) {
   return (

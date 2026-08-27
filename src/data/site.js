@@ -174,7 +174,7 @@ export const contact = {
   kicker: "Let's talk",
   title: "Tell us the problem. We'll tell you how we'd build it.",
   sub: 'Thirty minutes with the engineers who would do the work.',
-  email: 'phi.ai2025@outlook.com',
+  email: 'info@phi-ai.co',
   replyNote: 'Reply within one working day',
   submitLabel: 'Book a technical call',
 }

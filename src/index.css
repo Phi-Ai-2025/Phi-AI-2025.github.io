@@ -868,6 +868,7 @@ input, textarea, button { font-family: inherit; }
 }
 .contact-form input,
 .contact-form textarea {
+    width: 100%;
     min-width: 0;
     padding: 0 18px;
     height: 54px;
@@ -998,6 +999,9 @@ input, textarea, button { font-family: inherit; }
     .about__grid { grid-template-columns: 1fr; gap: 40px; }
     /* copy first, then the visual — matches how the case studies stack */
     .about__portrait { order: 1; min-height: 0; }
+    .pin-card { right: 0; bottom: -14px; padding: 12px 16px; border-radius: 16px; }
+    .pin-card__value { font-size: 1.125rem; }
+    .pin-card__label { font-size: 0.6875rem; }
 
     .contact { padding-bottom: 76px; }
     .contact__grid { grid-template-columns: 1fr; gap: 32px; }
@@ -1065,8 +1069,9 @@ input, textarea, button { font-family: inherit; }
     .principle h3 { font-size: 1rem; }
 
     .link-card { padding: 20px 20px 18px; border-radius: 22px; }
-    .pin-card { padding: 12px 16px; border-radius: 16px; }
-    .pin-card__value { font-size: 1.1875rem; }
+    .pin-card { padding: 10px 14px; border-radius: 14px; bottom: -10px; }
+    .pin-card__value { font-size: 1rem; }
+    .pin-card__label { font-size: 0.625rem; }
 
     .contact-form { gap: 11px; }
     .contact-form .row { grid-template-columns: 1fr; gap: 11px; }
