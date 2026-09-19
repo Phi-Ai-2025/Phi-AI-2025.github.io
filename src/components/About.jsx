@@ -1,4 +1,5 @@
 import { about } from '../data/site'
+import PhiMark from './PhiMark'
 
 /* No team photos and no headcount — this shows how you work with the team
    rather than how big it is, which is what the section actually promises. */
@@ -23,7 +24,7 @@ function DirectLine() {
 
         <div className="link-node link-node--brand">
           <span className="link-node__dot" aria-hidden="true">
-            φ
+            <PhiMark />
           </span>
           <span className="link-node__txt">
             <strong>{to.title}</strong>

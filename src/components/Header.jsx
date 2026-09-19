@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { nav } from '../data/site'
+import PhiMark from './PhiMark'
 
 const sections = nav.map((item) => item.href).filter((href) => href.startsWith('#'))
 
@@ -41,9 +42,7 @@ export default function Header() {
     <header className={`site-header${stuck ? ' is-stuck' : ''}`}>
       <div className="site-header__inner">
         <a className="brand" href="#top">
-          <span className="brand-mark" aria-hidden="true">
-            φ
-          </span>
+          <PhiMark className="brand-mark" />
           <span className="brand-name">
             Phi<span>.AI</span>
           </span>

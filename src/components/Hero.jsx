@@ -1,4 +1,5 @@
 import { hero } from '../data/site'
+import PhiMark from './PhiMark'
 
 function FloatCard({ card }) {
   return (
@@ -51,9 +52,8 @@ export default function Hero() {
         <span className="shape shape--pink" aria-hidden="true" />
         <span className="shape shape--warm" aria-hidden="true" />
         <span className="shape shape--blue" aria-hidden="true" />
-        <span className="phi-orb" aria-hidden="true">
-          φ
-        </span>
+        {/* big enough for the display cut — the fine network, no tile under it */}
+        <PhiMark className="phi-float" cut="display" />
         <img
           src="/assets/hero-vr.webp"
           width="940"

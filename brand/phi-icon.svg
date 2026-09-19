@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Phi.ai">
+  <!-- The 5b mark on its graphite tile. The node graph is kept, but drawn
+       heavier and with the two long cross-diagonals dropped: at favicon sizes
+       the display weights close into a smudge. Source: brand/phi-icon.svg -->
+  <defs><clipPath id="counter"><path d="M53 14 C66 15 77 26 77 40 C77 51 68 59 53 61 Z" /></clipPath></defs>
+  <rect width="100" height="100" rx="22" fill="#1a1e24" />
+  <path d="M53 14 C66 15 77 26 77 40 C77 51 68 59 53 61 Z" fill="#35b9f0" />
+  <g clip-path="url(#counter)">
+    <g stroke="#0e1418" stroke-width="1.6" fill="none" stroke-linecap="round">
+      <path d="M58 21 L69 28 M58 37 L69 28 M58 37 L70 42 M59 53 L70 42 M58 21 L58 37 L59 53 M69 28 L70 42" />
+    </g>
+    <g fill="#0e1418">
+      <circle cx="58" cy="21" r="3" /><circle cx="58" cy="37" r="3" /><circle cx="59" cy="53" r="3" />
+      <circle cx="69" cy="28" r="3" /><circle cx="70" cy="42" r="3" />
+    </g>
+  </g>
+  <g fill="#e8ecf1">
+    <path d="M42 8 C26 12 15 28 15 45 C15 61 28 70 48 72 L48 60 C33 58 25 51 25 41 C25 27 32 16 42 12 Z" />
+    <path d="M53 8 C71 9 86 26 86 45 C86 62 71 71 53 73 L53 61 C68 59 77 51 77 40 C77 26 66 15 53 14 Z" />
+    <path d="M45.6 8 L54.4 8 L54.4 92 L45.6 92 Z" />
+  </g>
+</svg>

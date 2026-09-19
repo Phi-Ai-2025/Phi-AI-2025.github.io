@@ -1,3 +1,5 @@
+import PhiMark from './PhiMark'
+
 const links = [
   { label: 'Work', href: '#work' },
   { label: 'What we do', href: '#services' },
@@ -9,10 +11,10 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <div className="brand">
-          <span className="brand-mark" aria-hidden="true">
-            φ
+          <PhiMark className="brand-mark" />
+          <span className="brand-name">
+            Phi<span>.AI</span>
           </span>
-          <span style={{ fontWeight: 800 }}>Phi.AI</span>
         </div>
         <div>© 2025–2026 Phi.AI — AI engineering. Cairo, Egypt.</div>
         <div className="site-footer__links">
